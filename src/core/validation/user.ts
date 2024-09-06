@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import VMasker from "vanilla-masker";
 
 export const signUpSchema = yup.object().shape({
   name: yup
@@ -6,7 +7,17 @@ export const signUpSchema = yup.object().shape({
     .trim()
     .required("Nome obrigatório")
     .min(3, "Nome deve ter pelo menos 3 caracteres"),
-  phone: yup.string().trim().required("Telefone obrigatório"),
+  phone: yup
+    .string()
+    .trim()
+    .required("Telefone obrigatório")
+    .test("testPhone", "Telefone inválido", (value) => {
+      const num = VMasker.toNumber(value);
+      if (num.length === 11) {
+        return true;
+      }
+      return false;
+    }),
   email: yup
     .string()
     .trim()

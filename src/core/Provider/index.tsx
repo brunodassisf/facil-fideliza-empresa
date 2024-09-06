@@ -1,11 +1,17 @@
 "use client";
 
-import { Box } from "@mui/material";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RootProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  return <Box component="main">{children}</Box>;
+  return (
+    <main>
+      {children}
+      <ToastContainer />
+    </main>
+  );
 };
 
 export default RootProvider;
