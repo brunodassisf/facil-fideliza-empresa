@@ -1,4 +1,4 @@
-import SignIn from "@/screen/SignIn";
+import SignUp from "@/screen/Signup";
 import { Box, Container, Divider, Typography } from "@mui/material";
 import Image from "next/image";
 
@@ -28,7 +28,7 @@ export default function HomeScreen() {
             <Typography className="font-thin text-blue-900">Empresa</Typography>
           </Divider>
         </Box>
-        <SignIn />
+        <SignUp />
       </Container>
     </Box>
   );
