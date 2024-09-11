@@ -3,11 +3,11 @@ const SpinnerPage: React.FC = () => {
   return (
     <div
       role="status"
-      className="w-full h-screen bg-black/50 z-50 top-0 left-0 flex justify-center items-center"
+      className="w-full h-screen bg-black/20 z-50 top-0 left-0 flex justify-center items-center"
     >
       <svg
         aria-hidden="true"
-        className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+        className="w-20 h-20 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
