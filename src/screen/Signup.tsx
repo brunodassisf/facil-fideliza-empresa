@@ -11,6 +11,8 @@ import { ProgressBar } from "@/components/index";
 import { useState } from "react";
 import doCreateUser from "@/core/actions/signup";
 import { toast } from "react-toastify";
+import { doCredential } from "@/core/actions/signin";
+import { useRouter } from "next/navigation";
 
 const initialValues = {
   email: "",
@@ -22,12 +24,26 @@ const initialValues = {
 };
 
 const SignUp: React.FC = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const handleCreateAccount = async (values: any) => {
     setIsLoading(true);
     await doCreateUser(values)
-      .then((res) => {
-        toast.success(res?.msg);
+      .then(async (res) => {
+        if (res?.ok) {
+          toast.success(res?.msg);
+          await doCredential({
+            email: values.email,
+            password: values.password,
+          }).then((res) => {
+            if (res?.ok) {
+              toast.success("Seja bem-vindo(a)!!");
+              router.push("/loja");
+            } else {
+              toast.error(res?.error);
+            }
+          });
+        }
       })
       .finally(() => setIsLoading(false));
   };
@@ -93,6 +109,7 @@ const SignUp: React.FC = () => {
         />
         <TextField
           label="Senha"
+          type="password"
           fullWidth
           value={values.password}
           name="password"
@@ -102,6 +119,7 @@ const SignUp: React.FC = () => {
         />
         <TextField
           label="Confirmar senha"
+          type="password"
           fullWidth
           value={values.passwordConfirmation}
           name="passwordConfirmation"

@@ -33,3 +33,16 @@ export const signUpSchema = yup.object().shape({
     .oneOf([yup.ref("password")], "As senhas devem ser iguais")
     .required("Confirme sua senha"),
 });
+
+export const signIpSchema = yup.object().shape({
+  email: yup
+    .string()
+    .trim()
+    .required("E-mail obrigatório")
+    .email("E-mail inválido"),
+  password: yup
+    .string()
+    .trim()
+    .required("Senha obrigatória")
+    .min(6, "Senha deve ter pelo menos 6 caracteres"),
+});
