@@ -1,4 +1,4 @@
-import SpinnerPage from "@/components/SpinnerPage";
+import SpinnerPage from "@/presentation/components/SpinnerPage";
 
 const Loading: React.FC = () => {
   return <SpinnerPage />;

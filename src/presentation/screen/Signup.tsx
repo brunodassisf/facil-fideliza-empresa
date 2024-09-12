@@ -7,7 +7,7 @@ import VMasker from "vanilla-masker";
 
 import { signUpSchema as validationSchema } from "@/core/validation/user";
 import { formatarString } from "@/core/util/format";
-import { ProgressBar } from "@/components/index";
+import { ProgressBar } from "@/presentation/components/index";
 import { useState } from "react";
 import doCreateUser from "@/core/actions/signup";
 import { toast } from "react-toastify";

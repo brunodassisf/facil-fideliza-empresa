@@ -6,7 +6,7 @@ import Link from "next/link";
 import { signIpSchema as validationSchema } from "@/core/validation/user";
 import { useFormik } from "formik";
 import { useState } from "react";
-import { ProgressBar } from "@/components";
+import { ProgressBar } from "@/presentation/components";
 import { doCredential } from "@/core/actions/signin";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";

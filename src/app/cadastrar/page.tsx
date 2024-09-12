@@ -1,4 +1,4 @@
-import SignUp from "@/screen/Signup";
+import SignUp from "@/presentation/screen/Signup";
 import { Box, Container, Divider, Typography } from "@mui/material";
 import Image from "next/image";
 
