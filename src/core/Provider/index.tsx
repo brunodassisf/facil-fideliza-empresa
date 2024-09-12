@@ -3,16 +3,19 @@
 import { SessionProvider } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { StoreProvider } from "../context/store";
 
 const RootProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   return (
     <SessionProvider>
-      <main>
-        {children}
-        <ToastContainer />
-      </main>
+      <StoreProvider>
+        <main>
+          {children}
+          <ToastContainer />
+        </main>
+      </StoreProvider>
     </SessionProvider>
   );
 };

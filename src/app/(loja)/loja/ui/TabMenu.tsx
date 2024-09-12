@@ -1,16 +1,28 @@
 "use client";
 
-import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import PersonalData from "./PersonalData";
+import { useContext, useEffect, useState } from "react";
+import { StoreContext } from "@/core/context/store";
 
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
 }
+
+type TabMenuProps = {
+  data: {
+    id: string;
+    name: string;
+    phone: string;
+    email: string;
+    img: string | null;
+    tag: string;
+  } | null;
+};
 
 function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -35,8 +47,15 @@ function a11yProps(index: number) {
   };
 }
 
-export default function TabMenu() {
-  const [value, setValue] = React.useState(0);
+const TabMenu: React.FC<TabMenuProps> = ({ data }) => {
+  const [value, setValue] = useState(0);
+  const { handlePopulateStore } = useContext(StoreContext);
+
+  useEffect(() => {
+    if (data) {
+      handlePopulateStore(data);
+    }
+  }, [data]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -62,4 +81,6 @@ export default function TabMenu() {
       </CustomTabPanel>
     </Box>
   );
-}
+};
+
+export default TabMenu;

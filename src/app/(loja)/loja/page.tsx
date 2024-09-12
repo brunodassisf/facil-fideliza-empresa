@@ -2,6 +2,8 @@ import { getServerAuthSession } from "@/app/api/auth/[...nextauth]/route";
 import getStore from "@/core/actions/store";
 import { Typography } from "@mui/material";
 import TabMenu from "./ui/TabMenu";
+import { useContext } from "react";
+import { StoreContext } from "@/core/context/store";
 
 export default async function StorePage() {
   const session = await getServerAuthSession();
@@ -14,7 +16,7 @@ export default async function StorePage() {
         <Typography variant="h4">{store?.name}</Typography>
       </section>
       <section className="bg-white rounded-t-2xl p-3 h-full">
-        <TabMenu />
+        <TabMenu data={store} />
       </section>
     </section>
   );
